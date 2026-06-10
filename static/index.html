@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Kurva Parametrik</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Kolom Kiri: Kontrol Panel -->
+        <aside class="control-panel glass-panel">
+            <h1>Dashboard Kurva</h1>
+            
+            <div class="form-group">
+                <label for="curveType">Jenis Kurva</label>
+                <select id="curveType">
+                    <option value="circle">Lingkaran</option>
+                    <option value="ellipse">Elips</option>
+                    <option value="parabola">Parabola</option>
+                    <option value="hyperbola">Hiperbola</option>
+                </select>
+            </div>
+
+            <div class="presets-container">
+                <h3>Preset Rekomendasi</h3>
+                <div id="presetGrid" class="preset-grid">
+                    <!-- Tombol preset akan di-generate oleh JS -->
+                </div>
+            </div>
+
+            <div class="params-container" id="paramsContainer">
+                <!-- Input parameter dinamis akan di-generate oleh JS -->
+            </div>
+
+            <button id="btnProcess" class="btn-primary">Proses Gambar</button>
+
+            <div class="analysis-panel glass-panel-inner">
+                <h3>Panel Analisis</h3>
+                <div id="analysisContent">
+                    <!-- Detail analisis akan di-generate oleh JS -->
+                    <p>Pilih kurva dan parameter untuk melihat analisis.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Kolom Kanan: Visualisasi -->
+        <main class="visualization-panel">
+            <div class="canvas-container glass-panel">
+                <div id="initialOverlay" class="canvas-overlay">
+                    <h2>Siap Merender</h2>
+                    <p>Atur parameter di panel kiri dan klik "Proses Gambar"</p>
+                </div>
+                <!-- Kanvas render ukuran 600x500 sesuai kriteria -->
+                <canvas id="curveCanvas" width="600" height="500"></canvas>
+            </div>
+
+            <div class="status-bar glass-panel">
+                <div class="live-tracking">
+                    <span class="label">Live Koordinat:</span>
+                    <span id="liveX">X: 0.00</span> | <span id="liveY">Y: 0.00</span>
+                </div>
+                <div class="render-status">
+                    <span id="renderStatusText">Menunggu input...</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts dipisah per tanggung jawab -->
+    <script src="/static/js/geometryCalc.js"></script>
+    <script src="/static/js/canvasAnimator.js"></script>
+    <script src="/static/js/ui.js"></script>
+</body>
+</html>
